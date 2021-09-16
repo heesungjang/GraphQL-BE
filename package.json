@@ -1,0 +1,23 @@
+{
+    "name": "clone_insta_be",
+    "version": "1.0.0",
+    "description": "sneak peek of graphQL + Apollo server + Node by cloning instagram backend",
+    "main": "index.js",
+    "scripts": {
+        "dev": "nodemon --exec node server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/heesungjang/clone_insta_BE.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/heesungjang/clone_insta_BE/issues"
+    },
+    "homepage": "https://github.com/heesungjang/clone_insta_BE#readme",
+    "dependencies": {
+        "apollo-server": "^3.3.0",
+        "graphql": "^15.5.3"
+    }
+}
