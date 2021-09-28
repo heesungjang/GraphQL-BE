@@ -27,7 +27,7 @@ const typeDefs = gql`
 const resolvers = {
     Query: {
         movies: () => client.movie.findMany(),
-        movie: () =>
+        movie: (_, { id }) =>
             client.movie.findUnique({
                 where: {
                     id,
