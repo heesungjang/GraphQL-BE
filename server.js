@@ -13,7 +13,7 @@ const typeDefs = gql`
     }
     type Mutation {
         createMovie(title: String!): Boolean
-        deleteMovie(title: String!): Boolean
+        deleteMovie(title: number!): Boolean
     }
 `;
 
