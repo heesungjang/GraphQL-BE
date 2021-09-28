@@ -20,7 +20,7 @@ const typeDefs = gql`
     }
     type Mutation {
         createMovie(title: String!, year: Int!, genre: String): Movie
-        deleteMovie(title: String!): Boolean
+        deleteMovie(id: Int!): Movie
     }
 `;
 
@@ -43,9 +43,7 @@ const resolvers = {
                     genre,
                 },
             }),
-        deleteMovie: (_, { id }) => {
-            return true;
-        },
+        deleteMovie: (_, { id }) => client.movie.delete({ where: { id } }),
     },
 };
 
