@@ -1,9 +1,13 @@
+import { PrismaClient } from "prisma/client";
 import { ApolloServer, gql } from "apollo-server";
+
+const client = new PrismaClient();
 
 import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
 
 const typeDefs = gql`
     type Movie {
+        id: Int
         title: String
         year: Int
     }
@@ -13,7 +17,7 @@ const typeDefs = gql`
     }
     type Mutation {
         createMovie(title: String!): Boolean
-        deleteMovie(title: number!): Boolean
+        deleteMovie(title: String!): Boolean
     }
 `;
 

@@ -17,6 +17,7 @@
     },
     "homepage": "https://github.com/heesungjang/clone_insta_BE#readme",
     "dependencies": {
+        "@prisma/client": "^3.1.1",
         "apollo-server": "^3.3.0",
         "graphql": "^15.5.3"
     },
