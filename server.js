@@ -6,6 +6,10 @@ import schema from "./schema";
 const server = new ApolloServer({
     schema,
     plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
+    context: {
+        Authorization:
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjMyOTMwMjUwfQ.dSCFSwTYNbJ-Yd0INHbX-yNM4zq_l5ZPjTUMUTwXcK0",
+    },
 });
 
 const PORT = process.env.PORT;
