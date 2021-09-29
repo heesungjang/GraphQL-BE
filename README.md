@@ -5,7 +5,7 @@ graphql backend schema list
 ## User:
 
 -   [x] Create Account
--   [ ] See Profile
+-   [x] See Profile
 -   [ ] Login
 -   [ ] Edit Profile
 -   [ ] Follow User
