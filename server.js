@@ -1,3 +1,4 @@
+require("dotenv").config();
 import { ApolloServer } from "apollo-server";
 import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
 import schema from "./schema";
@@ -7,6 +8,10 @@ const server = new ApolloServer({
     plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
 });
 
+const PORT = process.env.PORT;
+
 server
-    .listen()
-    .then(() => console.log("Sever is running on http://localhost:4000/ "));
+    .listen(PORT)
+    .then(() =>
+        console.log(`🏋️‍♀️ Sever is running on http://localhost:${PORT}/ `)
+    );
