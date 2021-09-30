@@ -6,8 +6,10 @@ export default {
         editProfile: async (
             _,
             { firstName, lastName, username, email, password: newPassword },
-            { loggedInUser }
+            // context object
+            { loggedInUser, protectResolver }
         ) => {
+            protectResolver(loggedInUser);
             let hashedPassword = null;
             if (newPassword) {
                 hashedPassword = await bcrypt.hash(newPassword, 10);
