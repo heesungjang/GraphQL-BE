@@ -14,10 +14,14 @@ export default {
                     email,
                     password: newPassword,
                     bio,
+                    avatar,
                 },
                 // context object
                 { loggedInUser }
             ) => {
+                const { filename, createReadStream } = await avatar;
+                const stream = createReadStream();
+                console.log(stream);
                 let hashedPassword = null;
                 if (newPassword) {
                     hashedPassword = await bcrypt.hash(newPassword, 10);
