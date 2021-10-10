@@ -20,13 +20,20 @@ export default {
                 // context object
                 { loggedInUser }
             ) => {
-                const { filename, createReadStream } = await avatar;
-                const readStream = createReadStream();
-                const writeStream = createWriteStream(
-                    process.cwd() + "/uploads/" + filename
-                );
+                let avatartUrl = null;
+                if (avatar) {
+                    const { filename, createReadStream } = await avatar;
+                    const newFilename = `${
+                        loggedInUser.id
+                    }-${Date.now()}-${filename}`;
+                    const readStream = createReadStream();
+                    const writeStream = createWriteStream(
+                        process.cwd() + "/uploads/" + newFilename
+                    );
 
-                readStream.pipe(writeStream);
+                    readStream.pipe(writeStream);
+                    avatartUrl = `http://localhost:4000/static/${newFilename}`;
+                }
                 let hashedPassword = null;
                 if (newPassword) {
                     hashedPassword = await bcrypt.hash(newPassword, 10);
@@ -40,6 +47,7 @@ export default {
                         email,
                         bio,
                         ...(hashedPassword && { password: hashedPassword }),
+                        ...(avatartUrl && { avatar: avatartUrl }),
                     },
                 });
                 if (updatedUser.id) {
