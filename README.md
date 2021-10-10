@@ -7,7 +7,7 @@ graphql backend schema list
 -   [x] Create Account
 -   [x] See Profile
 -   [x] Login
--   [ ] Edit Profile
--   [ ] Follow User
+-   [x] Edit Profile
+-   [x] Follow User
 -   [ ] Unfollow User
 -   [ ] Change Avatar (Image Upload)

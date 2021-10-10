@@ -11,7 +11,7 @@ export default {
                 if (!ok) {
                     return {
                         ok: false,
-                        error: "That user does not exist.",
+                        error: "User not found.",
                     };
                 }
                 await client.user.update({
