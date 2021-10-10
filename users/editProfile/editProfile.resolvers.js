@@ -20,7 +20,7 @@ export default {
                 // context object
                 { loggedInUser }
             ) => {
-                let avatartUrl = null;
+                let avatarUrl = null;
                 if (avatar) {
                     const { filename, createReadStream } = await avatar;
                     const newFilename = `${
@@ -32,7 +32,7 @@ export default {
                     );
 
                     readStream.pipe(writeStream);
-                    avatartUrl = `http://localhost:4000/static/${newFilename}`;
+                    avatarUrl = `http://localhost:4000/static/${newFilename}`;
                 }
                 let hashedPassword = null;
                 if (newPassword) {
@@ -47,7 +47,7 @@ export default {
                         email,
                         bio,
                         ...(hashedPassword && { password: hashedPassword }),
-                        ...(avatartUrl && { avatar: avatartUrl }),
+                        ...(avatarUrl && { avatar: avatarUrl }),
                     },
                 });
                 if (updatedUser.id) {
