@@ -3,6 +3,17 @@ import client from "../../client";
 export default {
     Query: {
         seeFollowers: async (_, { username, page }) => {
+            const user = await client.user.findUnique({
+                where: { username },
+                select: { id: true },
+            });
+
+            if (!user) {
+                return {
+                    ok: false,
+                    error: "User not found",
+                };
+            }
             const followers = await client.user
                 .findUnique({
                     where: {
