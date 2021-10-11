@@ -11,16 +11,15 @@ export default {
                 if (!ok) {
                     return {
                         ok: false,
-                        error: "User not found",
+                        error: "Can't unfollow user.",
                     };
                 }
-
                 await client.user.update({
                     where: {
                         id: loggedInUser.id,
                     },
                     data: {
-                        followings: {
+                        following: {
                             disconnect: {
                                 username,
                             },

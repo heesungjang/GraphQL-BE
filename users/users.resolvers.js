@@ -2,8 +2,8 @@ import client from "../client";
 
 export default {
     User: {
-        totalFollowings: async ({ id }) =>
-            await client.user.count({
+        totalFollowing: ({ id }) =>
+            client.user.count({
                 where: {
                     followers: {
                         some: {
@@ -12,10 +12,10 @@ export default {
                     },
                 },
             }),
-        totalFollowers: async ({ id }) =>
-            await client.user.count({
+        totalFollowers: ({ id }) =>
+            client.user.count({
                 where: {
-                    followings: {
+                    following: {
                         some: {
                             id,
                         },
@@ -35,7 +35,7 @@ export default {
             const exists = await client.user.count({
                 where: {
                     username: loggedInUser.username,
-                    followings: {
+                    following: {
                         some: {
                             id,
                         },
@@ -44,5 +44,6 @@ export default {
             });
             return Boolean(exists);
         },
+        photos: ({ id }) => client.user.findUnique({ where: { id } }).photos(),
     },
 };

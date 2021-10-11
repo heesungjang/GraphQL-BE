@@ -11,7 +11,7 @@ export default {
                 if (!ok) {
                     return {
                         ok: false,
-                        error: "User not found.",
+                        error: "That user does not exist.",
                     };
                 }
                 await client.user.update({
@@ -19,7 +19,7 @@ export default {
                         id: loggedInUser.id,
                     },
                     data: {
-                        followings: {
+                        following: {
                             connect: {
                                 username,
                             },

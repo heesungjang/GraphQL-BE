@@ -2,34 +2,27 @@ import client from "../../client";
 
 export default {
     Query: {
-        seeFollowings: async (_, { username, lastId }) => {
-            const user = await client.user.findUnique({
+        seeFollowing: async (_, { username, lastId }) => {
+            const ok = await client.user.findUnique({
                 where: { username },
                 select: { id: true },
             });
-
-            if (!user) {
+            if (!ok) {
                 return {
                     ok: false,
                     error: "User not found",
                 };
             }
-
-            const followings = await client.user
-                .findUnique({
-                    where: {
-                        username,
-                    },
-                })
-                .followings({
+            const following = await client.user
+                .findUnique({ where: { username } })
+                .following({
                     take: 5,
                     skip: lastId ? 1 : 0,
                     ...(lastId && { cursor: { id: lastId } }),
                 });
-            console.log(followings);
             return {
                 ok: true,
-                followings,
+                following,
             };
         },
     },
